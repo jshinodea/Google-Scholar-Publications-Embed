@@ -21,10 +21,11 @@ services:
     name: update-publications
     runtime: node
     schedule: "0 0 * * *"  # Run at midnight every day
+    buildCommand: npm install
+    command: npm run cron
     disk:
       name: publications-data
       mountPath: /data
-    command: node src/cron/update-publications.js  # Direct command to run the script
     envVars:
       - key: NODE_ENV
         value: production
