@@ -18,4 +18,4 @@ services:
     name: update-publications
     runtime: node
     schedule: "0 0 * * *"  # Run at midnight every day
-    command: npm install && npm run cron  # Combined install and run command 
+    command: node src/cron/update-publications.js  # Direct command to run the script
