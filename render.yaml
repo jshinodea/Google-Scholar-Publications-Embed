@@ -22,7 +22,7 @@ services:
     runtime: node
     schedule: "0 0 * * *"  # Run at midnight every day
     buildCommand: npm install
-    command: npm run cron
+    command: node cron.js
     disk:
       name: publications-data
       mountPath: /data

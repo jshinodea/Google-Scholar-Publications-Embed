@@ -5,7 +5,7 @@
   "main": "src/web/server.js",
   "scripts": {
     "start": "node src/web/server.js",
-    "cron": "node src/cron/update-publications.js",
+    "cron": "node cron.js",
     "dev": "nodemon src/web/server.js",
     "test": "jest"
   },
