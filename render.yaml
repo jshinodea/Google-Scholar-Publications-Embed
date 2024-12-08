@@ -16,14 +16,6 @@ services:
   # Cron job
   - type: cron
     name: update-publications
-    env: node
+    runtime: node
     schedule: "0 0 * * *"  # Run at midnight every day
-    buildCommand: npm install
-    startCommand: npm run cron
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: SERPAPI_KEY
-        sync: false
-      - key: GOOGLE_SCHOLAR_URL
-        sync: false 
+    command: npm install && npm run cron  # Combined install and run command 
