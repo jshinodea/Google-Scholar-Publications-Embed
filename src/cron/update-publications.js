@@ -50,14 +50,11 @@ async function updatePublications() {
     // Convert to BibTeX
     const bibtex = convertToBibtex(publications);
     
-    // Ensure data directory exists
-    const dataDir = path.join(__dirname, '../../data');
-    await fs.mkdir(dataDir, { recursive: true });
+    // Write to file in project root
+    const filePath = path.join(__dirname, '../../publications.bib');
+    await fs.writeFile(filePath, bibtex);
     
-    // Write to file
-    await fs.writeFile(path.join(dataDir, 'publications.bib'), bibtex);
-    
-    console.log('Publications updated successfully');
+    console.log('Publications updated successfully at:', filePath);
   } catch (error) {
     console.error('Failed to update publications:', error);
     process.exit(1);
