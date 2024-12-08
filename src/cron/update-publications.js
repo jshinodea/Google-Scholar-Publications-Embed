@@ -50,8 +50,9 @@ async function updatePublications() {
     // Convert to BibTeX
     const bibtex = convertToBibtex(publications);
     
-    // Write to file in project root
-    const filePath = path.join(__dirname, '../../publications.bib');
+    // Write to shared disk
+    const filePath = '/data/publications.bib';
+    await fs.mkdir('/data', { recursive: true });
     await fs.writeFile(filePath, bibtex);
     
     console.log('Publications updated successfully at:', filePath);

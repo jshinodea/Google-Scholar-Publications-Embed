@@ -24,7 +24,7 @@ app.get('/embed.js', async (req, res) => {
 // Endpoint to get publications data
 app.get('/publications', async (req, res) => {
   try {
-    const bibFile = await fs.readFile(path.join(__dirname, '../../publications.bib'), 'utf8');
+    const bibFile = await fs.readFile('/data/publications.bib', 'utf8');
     res.json({ publications: bibFile });
   } catch (error) {
     console.error('Error reading publications:', error);

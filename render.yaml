@@ -5,6 +5,9 @@ services:
     env: node
     buildCommand: npm install
     startCommand: npm start
+    disk:
+      name: publications-data
+      mountPath: /data
     envVars:
       - key: NODE_ENV
         value: production
@@ -18,4 +21,14 @@ services:
     name: update-publications
     runtime: node
     schedule: "0 0 * * *"  # Run at midnight every day
+    disk:
+      name: publications-data
+      mountPath: /data
     command: node src/cron/update-publications.js  # Direct command to run the script
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SERPAPI_KEY
+        sync: false
+      - key: GOOGLE_SCHOLAR_URL
+        sync: false
